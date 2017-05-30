@@ -5,6 +5,7 @@ import path from 'path';
 import webpack from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import DashboardPlugin from 'webpack-dashboard/plugin';
 
 export default {
   entry: {
@@ -17,7 +18,7 @@ export default {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../build'),
-    compress: false,
+    compress: true,
     port: 1337
   },
   devtool: 'source-map',
@@ -33,7 +34,8 @@ export default {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['env', 'react']
+              presets: ['env', 'react'],
+              plugins: [require('babel-plugin-transform-object-rest-spread')]
             }
           }
         ]
@@ -76,6 +78,7 @@ export default {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       Tether: 'tether'
-    })
+    }),
+    new DashboardPlugin({port: 1337})
   ]
 }

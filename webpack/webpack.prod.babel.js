@@ -12,6 +12,7 @@ export default {
     server: '../app/server/index.js'
   },
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, '../build'),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map'

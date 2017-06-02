@@ -1,47 +1,33 @@
 //
 // actions file
 
-/*
- * action types
- */
+import Common from '../lib/common';
+
+// action types
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
-/*
- * other constants
- */
+// other constants
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
 }
 
-/*
- * action creators
- */
-let nextId = 0;
-export function addTodo(text) {
-  console.log('Add Todo Dude');
-  return {
-    type: ADD_TODO,
-    id: nextId++,
-    text
-  };
-}
+// action creators
+export const addTodo = text => ({
+  type: ADD_TODO,
+  id: Common.makeId(),
+  text,
+});
 
-export function toggleTodo(id) {
-  console.log('Toggle Todo Dude');
-  return {
-    type: TOGGLE_TODO,
-    id
-  };
-}
+export const toggleTodo = id => ({
+  type: TOGGLE_TODO,
+  id,
+});
 
-export function setVisibilityFilter(filter) {
-  console.log('setVisibilityFilter Dude');
-  return {
-    type: SET_VISIBILITY_FILTER,
-    filter
-  };
-}
+export const setVisibilityFilter = filter => ({
+  type: SET_VISIBILITY_FILTER,
+  filter,
+});

@@ -8,7 +8,7 @@ export default function Jumbo(props) {
   return (
     <section className="jumbotron">
       <div className="container">
-        <h1>Starter kit for React</h1>
+        <h1>Starter kit for React Alright</h1>
         <p>
           Includes - <span className="text-info">React</span>,
           <span className="text-muted"> Redux</span>,

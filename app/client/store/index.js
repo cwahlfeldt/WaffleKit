@@ -3,13 +3,21 @@
 
 import { createStore } from 'redux';
 import todoApp from '../reducers';
-import {
-  addTodo,
-  toggleTodo,
-  setVisibilityFilter,
-  VisibilityFilters
-} from '../actions';
+import { loadState, saveState } from '../lib/localStorage';
 
-let store = createStore(todoApp);
+const configureStore = () => {
+  let store = createStore(
+    todoApp,
+    loadState()
+  );
 
-export default store;
+  store.subscribe(() => {
+    saveState({
+      todos: store.getState().todos
+    });
+  });
+
+  return store;
+};
+
+export default configureStore;

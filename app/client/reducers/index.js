@@ -2,14 +2,21 @@
 // Main reducer file
 
 import { combineReducers } from 'redux';
-import todos, * as fromTodos from './todos';
+import { INCREMENT, DECREMENT } from '../actions';
 
-export const getVisibleTodos = (state, filter) => (
-  fromTodos.getVisibleTodos(state, filter)
-);
+const number = (state = 0, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
 
-const todoApp = combineReducers({
-  todos,
+const counterApp = combineReducers({
+  number,
 });
 
-export default todoApp;
+export default counterApp;

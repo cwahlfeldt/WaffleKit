@@ -13,7 +13,7 @@ import App from '../App';
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <Route path='/:filter?' component={App} />
+      <Route path='/' component={App} />
     </Router>
   </Provider>
 );

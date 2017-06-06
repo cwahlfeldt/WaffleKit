@@ -17,9 +17,10 @@ export default {
     filename: '[name].bundle.js'
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '../build'),
+    contentBase: path.resolve(__dirname, '../build/*'),
     compress: true,
-    port: 1337
+    port: 1337,
+    historyApiFallback: true,
   },
   devtool: 'source-map',
   module: {
@@ -29,13 +30,13 @@ export default {
         exclude: [/node_modules/],
         use: [
           {
-            loader: 'react-hot-loader/webpack'
+            loader: 'react-hot-loader/webpack',
           },
           {
             loader: 'babel-loader',
             options: {
               presets: ['env', 'react'],
-              plugins: [require('babel-plugin-transform-object-rest-spread')]
+              plugins: [require('babel-plugin-transform-object-rest-spread')],
             }
           }
         ]
@@ -79,6 +80,5 @@ export default {
       'window.jQuery': 'jquery',
       Tether: 'tether'
     }),
-    new DashboardPlugin({port: 1337})
-  ]
+  ],
 }

@@ -8,7 +8,7 @@ import { loadState, saveState } from '../lib/localStorage';
 const configureStore = () => {
   let store = createStore(
     todoApp,
-    loadState()
+    loadState(),
   );
 
   store.subscribe(() => {
